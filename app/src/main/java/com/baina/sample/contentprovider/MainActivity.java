@@ -1,4 +1,4 @@
-package com.example.baina.themeinfosproviderdemo;
+package com.baina.sample.contentprovider;
 
 import android.database.Cursor;
 import android.net.Uri;

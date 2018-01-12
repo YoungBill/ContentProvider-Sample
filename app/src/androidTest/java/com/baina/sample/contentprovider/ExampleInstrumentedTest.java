@@ -1,4 +1,4 @@
-package com.example.baina.themeinfosproviderdemo;
+package com.baina.sample.contentprovider;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.baina.themeinfosproviderdemo", appContext.getPackageName());
+        assertEquals("com.baina.sample.contentprovider", appContext.getPackageName());
     }
 }
