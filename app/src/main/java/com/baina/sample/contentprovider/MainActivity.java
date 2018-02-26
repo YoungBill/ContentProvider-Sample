@@ -1,9 +1,13 @@
 package com.baina.sample.contentprovider;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import static com.baina.sample.contentprovider.Constants.KEY_SP;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.testSP:
                 startActivity(new Intent(MainActivity.this, TestSPActivity.class));
+                String sharedName = getPackageName() + "_preferences";
+                SharedPreferences sharedPreferences = getSharedPreferences(sharedName, MODE_PRIVATE);
+                sharedPreferences.edit().putString(KEY_SP, "这是内容").apply();
                 break;
             case R.id.testCP:
                 startActivity(new Intent(MainActivity.this, TestCPActivity.class));

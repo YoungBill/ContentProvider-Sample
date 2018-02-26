@@ -18,9 +18,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".TestSPActivity" />
+        <activity
+            android:name=".TestSPActivity"
+            android:process=":testsp" />
 
-        <activity android:name=".TestCPActivity" />
+        <activity
+            android:name=".TestCPActivity"
+            android:process=":testcp" />
 
         <provider
             android:name=".BookProvider"

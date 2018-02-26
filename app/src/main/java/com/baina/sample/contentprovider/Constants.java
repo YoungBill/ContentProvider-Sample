@@ -6,6 +6,8 @@ package com.baina.sample.contentprovider;
 
 public class Constants {
 
+    public static final String KEY_SP = "key_sp";
+
     /**
      * ContentProvider格式
      * |------Scheme------|-----------------Authority-------------------|---资源路径---|---ID--|
