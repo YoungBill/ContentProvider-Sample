@@ -1,11 +1,16 @@
 package com.baina.sample.contentprovider;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
+import com.baina.sample.contentprovider.entity.Book;
+import com.baina.sample.contentprovider.greendao.BookDao;
+
+import java.util.List;
 
 import static com.baina.sample.contentprovider.Constants.KEY_SP;
 
@@ -29,6 +34,17 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.testCP:
                 startActivity(new Intent(MainActivity.this, TestCPActivity.class));
+                BookDao bookDao = DBManager.getBookDao();
+                Book book = new Book();
+                book.setCategory("开发");
+                book.setBookName("PHP");
+                bookDao.insert(book);
+                List<Book> bookList = bookDao.queryBuilder().list();
+                String str = "";
+                for (Book book1 : bookList) {
+                    str += "类别: " + book1.getCategory() + " 书名: " + book1.getBookName() + "\n";
+                }
+                Toast.makeText(MainActivity.this, "数据库里有:" + bookList.size() + "本书.分别是:\n" + str, Toast.LENGTH_SHORT).show();
                 break;
         }
     }
