@@ -29,7 +29,7 @@
 
         <provider
             android:name=".BookProvider"
-            android:authorities="com.baina.sample.contentprovider.bookprovider"
+            android:authorities="com.baina.sample.contentprovider"
             android:process=":provider" />
     </application>
 

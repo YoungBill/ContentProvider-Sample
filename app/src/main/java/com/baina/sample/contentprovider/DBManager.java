@@ -15,12 +15,14 @@ public class DBManager {
 
     private static final String DBNAME = "test_db";
 
+    private static Context mContext;
     private static DaoMaster.DevOpenHelper mOpenHelper;
     private static DaoMaster mDaoMaster;
     private static DaoSession mDaoSession;
     private static BookDao mBookDao;
 
     public static void init(Context context) {
+        mContext = context;
         mOpenHelper = new DaoMaster.DevOpenHelper(context, DBNAME, null);
     }
 
@@ -41,5 +43,11 @@ public class DBManager {
         if (mBookDao == null)
             mBookDao = mDaoSession.getBookDao();
         return mBookDao;
+    }
+
+    public static DaoMaster.DevOpenHelper getOpenHelper() {
+        if (mOpenHelper == null)
+            mOpenHelper = new DaoMaster.DevOpenHelper(mContext, DBNAME, null);
+        return mOpenHelper;
     }
 }

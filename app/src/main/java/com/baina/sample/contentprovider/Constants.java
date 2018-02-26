@@ -13,6 +13,6 @@ public class Constants {
      * |------Scheme------|-----------------Authority-------------------|---资源路径---|---ID--|
      */
     public static final String SCHEME = "content://";
-    public static final String AUTHORITY = "";
-    public static final String BOOK = "book";
+    public static final String AUTHORITY = "com.baina.sample.contentprovider";
+    public static final String BOOK = "BOOK";
 }
