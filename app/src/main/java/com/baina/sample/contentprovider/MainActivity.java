@@ -11,6 +11,7 @@ import com.baina.sample.contentprovider.entity.Book;
 import com.baina.sample.contentprovider.greendao.BookDao;
 
 import java.util.List;
+import java.util.Random;
 
 import static com.baina.sample.contentprovider.Constants.KEY_SP;
 
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, TestCPActivity.class));
                 BookDao bookDao = DBManager.getBookDao();
                 Book book = new Book();
-                book.setCategory("开发");
+                Random random = new Random();
+                book.setCategory("开发" + random.nextInt(5));
                 book.setBookName("PHP");
                 bookDao.insert(book);
                 List<Book> bookList = bookDao.queryBuilder().list();

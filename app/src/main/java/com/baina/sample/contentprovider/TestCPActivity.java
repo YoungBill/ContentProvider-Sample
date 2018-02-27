@@ -25,13 +25,13 @@ public class TestCPActivity extends AppCompatActivity {
 
         String content = "";
         Uri bookUri = BookProvider.BOOK_CONTENT_URI;
-        Cursor bookCursor = getContentResolver().query(bookUri, new String[]{"_id", "CATEGORY", "BOOKNAME"}, null, null, null);
+        Cursor bookCursor = getContentResolver().query(bookUri, null, null, null, null);
         if (bookCursor != null) {
             while (bookCursor.moveToNext()) {
                 Book book = new Book();
                 book.setCategory(bookCursor.getString(1));
                 book.setBookName(bookCursor.getString(2));
-                content += book.toString() + "\n";
+                content += "类别: " + book.getCategory() + " 书名: " + book.getBookName() + "\n";
                 contentTv.setText(content);
             }
             bookCursor.close();

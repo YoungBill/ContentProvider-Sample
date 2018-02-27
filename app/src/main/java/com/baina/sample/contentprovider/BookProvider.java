@@ -41,7 +41,7 @@ public class BookProvider extends ContentProvider {
             throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
         Log.d(TAG, "-------ContentProvider-------query " + tableName);
-        return DBManager.getOpenHelper().getWritableDatabase().query(tableName, projection, selection, selectionArgs, null, null, sortOrder, null);
+        return DBManager.getDatabase().query(tableName, projection, selection, selectionArgs, null, null, sortOrder, null);
     }
 
     @Nullable

@@ -1,6 +1,7 @@
 package com.baina.sample.contentprovider;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.baina.sample.contentprovider.greendao.BookDao;
 import com.baina.sample.contentprovider.greendao.DaoMaster;
@@ -17,13 +18,13 @@ public class DBManager {
 
     private static Context mContext;
     private static DaoMaster.DevOpenHelper mOpenHelper;
+    private static SQLiteDatabase mDatabase;
     private static DaoMaster mDaoMaster;
     private static DaoSession mDaoSession;
     private static BookDao mBookDao;
 
     public static void init(Context context) {
         mContext = context;
-        mOpenHelper = new DaoMaster.DevOpenHelper(context, DBNAME, null);
     }
 
     /**
@@ -36,8 +37,12 @@ public class DBManager {
      */
     //
     public static BookDao getBookDao() {
+        if (mOpenHelper == null)
+            mOpenHelper = new DaoMaster.DevOpenHelper(mContext, DBNAME, null);
+        if (mDatabase == null)
+            mDatabase = mOpenHelper.getWritableDatabase();
         if (mDaoMaster == null)
-            mDaoMaster = new DaoMaster(mOpenHelper.getWritableDatabase());
+            mDaoMaster = new DaoMaster(mDatabase);
         if (mDaoSession == null)
             mDaoSession = mDaoMaster.newSession();
         if (mBookDao == null)
@@ -45,9 +50,11 @@ public class DBManager {
         return mBookDao;
     }
 
-    public static DaoMaster.DevOpenHelper getOpenHelper() {
+    public static SQLiteDatabase getDatabase() {
         if (mOpenHelper == null)
             mOpenHelper = new DaoMaster.DevOpenHelper(mContext, DBNAME, null);
-        return mOpenHelper;
+        if (mDatabase == null)
+            mDatabase = mOpenHelper.getWritableDatabase();
+        return mDatabase;
     }
 }
