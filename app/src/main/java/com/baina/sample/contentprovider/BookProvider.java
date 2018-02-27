@@ -20,12 +20,8 @@ public class BookProvider extends ContentProvider {
 
     private static final UriMatcher mUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
-    private static final int BOOK_URI_CODE = 0;
-
-    public static final Uri BOOK_CONTENT_URI = Uri.parse(Constants.SCHEME + Constants.AUTHORITY + "/" + Constants.BOOK);
-
     static {
-        mUriMatcher.addURI(Constants.AUTHORITY, Constants.BOOK, BOOK_URI_CODE);
+        mUriMatcher.addURI(Constants.AUTHORITY, Constants.BOOK, Constants.BOOK_URI_CODE);
     }
 
     @Override
@@ -69,7 +65,7 @@ public class BookProvider extends ContentProvider {
     private String getTableName(Uri uri) {
         String tableName = null;
         switch (mUriMatcher.match(uri)) {
-            case BOOK_URI_CODE:
+            case Constants.BOOK_URI_CODE:
                 tableName = Constants.BOOK;
                 break;
             default:

@@ -24,7 +24,7 @@ public class TestCPActivity extends AppCompatActivity {
         TextView contentTv = findViewById(R.id.contentTv);
 
         String content = "";
-        Uri bookUri = BookProvider.BOOK_CONTENT_URI;
+        Uri bookUri = Constants.BOOK_CONTENT_URI;
         Cursor bookCursor = getContentResolver().query(bookUri, null, null, null, null);
         if (bookCursor != null) {
             while (bookCursor.moveToNext()) {
